@@ -11,16 +11,27 @@ const {
   deleteDoc,
 } = require('firebase/firestore');
 const functions = require('firebase-functions');
+require('dotenv').config();
 //const admin = require('firebase-admin');
+require('dotenv').config();
+
+console.log('Firebase Config:', {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
+});
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyDGGtYs_ikvlAr2C8HZEbr5GZ5TVmwSfIA',
-  authDomain: 'wellness-api-2c049.firebaseapp.com',
-  projectId: 'wellness-api-2c049',
-  storageBucket: 'wellness-api-2c049.firebasestorage.app',
-  messagingSenderId: '823484362277',
-  appId: '1:823484362277:web:1fbe48615e93c0a25859cc',
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID,
 };
 
 // Initialize Firebase and Firestore
@@ -85,5 +96,5 @@ appServer.post('/delete', async (req, res) => {
 });
 
 // Start the server
-//appServer.listen(4000, () => console.log('Server running on port 4000'));
-exports.appServer = functions.https.onRequest(appServer);
+appServer.listen(4000, () => console.log('Server running on port 4000'));
+//exports.appServer = functions.https.onRequest(appServer);
